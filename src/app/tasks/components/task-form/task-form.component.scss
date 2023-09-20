@@ -1,0 +1,19 @@
+.content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 650px;
+
+  h2{
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+}

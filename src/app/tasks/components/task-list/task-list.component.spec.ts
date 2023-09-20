@@ -8,7 +8,7 @@ const mockTask: Task[] = [
   { id: '1', title: 'test', description: 'test', completed: false }
 ];
 
-fdescribe('TaskListComponent', () => {
+describe('TaskListComponent', () => {
   let component: TaskListComponent;
   let fixture: ComponentFixture<TaskListComponent>;
   let serviceStub: jasmine.SpyObj<TaskService>;

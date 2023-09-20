@@ -6,3 +6,13 @@ export interface Task {
   created?: Date;
   updated?: Date;
 }
+
+export interface TaskCreateBody {
+  title: string;
+  description: string;
+}
+
+export interface ResponseTask {
+  message: string;
+  id?: string;
+}

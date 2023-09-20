@@ -10,7 +10,7 @@ import { Task } from '../../models/task.model';
   styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent extends RxjsSubscriber implements OnInit {
-  tasks: Task[] = [];
+  tasks: Task[];
   loading = false;
 
   constructor(private readonly _taskService: TaskService) {

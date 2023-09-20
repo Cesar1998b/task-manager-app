@@ -5,7 +5,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TaskService } from './task.service';
-import { Task } from '../models/task.model';
+import { ResponseTask, Task, TaskCreateBody } from '../models/task.model';
 
 const url = environment.urlApi;
 
@@ -44,5 +44,22 @@ describe('TaskService', () => {
     );
     expect(req.request.method).toEqual('GET');
     req.flush(mockResponseData);
+  });
+
+  it('should call createTask', (done: DoneFn) => {
+    const mockData: TaskCreateBody = { title: 'test', description: 'test' };
+
+    const mockResponse: ResponseTask = { message: 'Okay' }
+
+    service.createTask(mockData).subscribe((response) => {
+      expect(response).toEqual(mockResponse);
+      done();
+    });
+
+    const req = httpTestingController.expectOne(
+      (testRequest) => testRequest.url === `${url}/tasks`
+    );
+    expect(req.request.method).toEqual('POST');
+    req.flush(mockResponse);
   });
 });

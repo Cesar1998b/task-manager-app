@@ -1,9 +1,13 @@
 .content {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 650px;
+  .content-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button{
+      font-weight: 600;
+    }
+  }
 
   .spinner {
     display: flex;
@@ -13,13 +17,13 @@
   }
 
   h2 {
-    text-align: center;
     margin-bottom: 40px;
+    font-size: 40px;
   }
 
   .content-task {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
 }

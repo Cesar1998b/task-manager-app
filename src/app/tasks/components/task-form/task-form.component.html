@@ -1,0 +1,16 @@
+<div class="content">
+  <h2>Create Task</h2>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput formControlName="title" placeholder="Title" [required]="true">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput formControlName="description" placeholder="Description" [required]="true"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!taskForm.valid">Create</button>
+  </form>
+</div>
+
+
+
+
