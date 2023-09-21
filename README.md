@@ -10,9 +10,11 @@ This project has an architecture where everything related to Task is within itse
 
 It was decided to use a minimalist design with only black and white colors where it would be pleasant for the human eye to be able to see, create, update and delete its tasks.
 
+This project has been deployed in [Vercel](https://vercel.com) since the integration with the git repositories is very simple and the CI/CD process is instantaneous when making a commit
+
 ## Production server
 
- Visit  [Task Manager App]() and test our app 🔥
+ Visit  [Task Manager App](https://task-manager-app-rust.vercel.app/tasks) and test our app 🔥
 
 ## Development server
  
