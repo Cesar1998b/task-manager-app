@@ -5,7 +5,17 @@
   font-family: "Poppins", sans-serif;
 }
 
-body{
+body {
   padding: 32px 64px;
   box-sizing: border-box;
+}
+
+.success-snackbar {
+  background-color: #6fcf97;
+  color: #ffffff;
+}
+
+.error-snackbar {
+  background-color: #eb5757;
+  color: #ffffff;
 }

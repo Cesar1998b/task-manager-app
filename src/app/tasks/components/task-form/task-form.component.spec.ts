@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../../shared/services/notifications.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TaskFormComponent } from './task-form.component';
 import { TaskService } from '../../services/task.service';
@@ -15,11 +16,18 @@ describe('TaskFormComponent', () => {
   let fixture: ComponentFixture<TaskFormComponent>;
   let serviceStub: jasmine.SpyObj<TaskService>;
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+  let notificationService: jasmine.SpyObj<NotificationsService>;
 
   beforeEach(async () => {
     serviceStub = jasmine.createSpyObj('TaskService', {
       createTask: of(mockTask),
     });
+
+    notificationService = jasmine.createSpyObj('NotificationsService', {
+      showError: of({}),
+      showSuccess: of({})
+    });
+
 
     await TestBed.configureTestingModule({
       declarations: [TaskFormComponent],
@@ -28,6 +36,10 @@ describe('TaskFormComponent', () => {
         FormBuilder,
         { provide: TaskService, useValue: serviceStub },
         { provide: Router, useValue: routerSpy },
+        {
+          provide: NotificationsService,
+          useValue: notificationService,
+        }
       ],
     })
     .compileComponents();
@@ -55,6 +67,7 @@ describe('TaskFormComponent', () => {
 
     expect(serviceStub.createTask).toHaveBeenCalledWith(taskFormValue);
     expect(routerSpy.navigate).toHaveBeenCalledWith(['/tasks']);
+    expect(notificationService.showSuccess).toHaveBeenCalled();
   });
 
   it('should handle form submission error', () => {
@@ -71,5 +84,6 @@ describe('TaskFormComponent', () => {
     component.onSubmit();
 
     expect(serviceStub.createTask).toHaveBeenCalled();
+    expect(notificationService.showError).toHaveBeenCalled();
   });
 });

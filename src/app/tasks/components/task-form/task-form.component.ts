@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TaskService } from '../../services/task.service';
 import { RxjsSubscriber } from '../../../common/abstracts/RxjsSubscriber';
 import { EMPTY, catchError, takeUntil } from 'rxjs';
-import { Router } from '@angular/router';
+import { TaskService } from '../../services/task.service';
+import { NotificationsService } from './../../../shared/services/notifications.service';
 
 @Component({
   selector: 'app-task-form',
@@ -16,7 +17,8 @@ export class TaskFormComponent extends RxjsSubscriber {
   constructor(
     private _fb: FormBuilder,
     private readonly _router: Router,
-    private _taskService: TaskService
+    private _taskService: TaskService,
+    private readonly _notificationService: NotificationsService
   ) {
     super();
 
@@ -33,11 +35,13 @@ export class TaskFormComponent extends RxjsSubscriber {
         .createTask(data)
         .pipe(
           takeUntil(this.destroySubject$),
-          catchError(() => {
+          catchError((error) => {
+            this._notificationService.showError(error);
             return EMPTY;
           })
         )
         .subscribe((res) => {
+          this._notificationService.showSuccess(res.message);
           this._router.navigate(['/tasks']);
         });
     }

@@ -20,4 +20,8 @@ export class TaskService {
   createTask(data: TaskCreateBody): Observable<ResponseTask> {
     return this._http.post<ResponseTask>(`${this.url}/tasks`, data);
   }
+
+  deleteTask(taskId: string): Observable<ResponseTask> {
+    return this._http.delete<ResponseTask>(`${this.url}/tasks/${taskId}`);
+  }
 }

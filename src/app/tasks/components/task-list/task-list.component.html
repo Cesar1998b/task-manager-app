@@ -11,8 +11,10 @@
   <div *ngIf="!loading" class="content-task">
     <div *ngFor="let task of tasks">
       <app-task-item
+        [id]="task.id"
         [title]="task.title"
         [completed]="task.completed"
+        (deleteClicked)="deleteTask(task.id)"
       ></app-task-item>
     </div>
   </div>

@@ -62,4 +62,22 @@ describe('TaskService', () => {
     expect(req.request.method).toEqual('POST');
     req.flush(mockResponse);
   });
+
+
+  it('should call deleteTask', (done: DoneFn) => {
+    const mockId = 'test';
+
+    const mockResponse: ResponseTask = { message: 'Okay' }
+
+    service.deleteTask(mockId).subscribe((response) => {
+      expect(response).toEqual(mockResponse);
+      done();
+    });
+
+    const req = httpTestingController.expectOne(
+      (testRequest) => testRequest.url === `${url}/tasks/test`
+    );
+    expect(req.request.method).toEqual('DELETE');
+    req.flush(mockResponse);
+  });
 });
