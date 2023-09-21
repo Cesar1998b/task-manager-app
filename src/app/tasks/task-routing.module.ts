@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'create',
     component: TaskFormComponent
+  },
+  {
+    path: 'edit/:id',
+    component: TaskFormComponent
   }
 ];
 

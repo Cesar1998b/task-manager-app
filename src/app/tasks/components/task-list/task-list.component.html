@@ -13,6 +13,7 @@
       <app-task-item
         [id]="task.id"
         [title]="task.title"
+        [description]="task.description"
         [completed]="task.completed"
         (deleteClicked)="deleteTask(task.id)"
       ></app-task-item>

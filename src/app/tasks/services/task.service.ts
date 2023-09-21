@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { ResponseTask, Task, TaskCreateBody } from '../models/task.model';
 
@@ -10,6 +10,9 @@ import { ResponseTask, Task, TaskCreateBody } from '../models/task.model';
 export class TaskService {
 
   private url = environment.urlApi;
+
+  private selectedTaskSubject = new BehaviorSubject<TaskCreateBody | null>(null);
+  selectedTask$ = this.selectedTaskSubject.asObservable();
 
   constructor(private _http: HttpClient) { }
 
@@ -23,5 +26,13 @@ export class TaskService {
 
   deleteTask(taskId: string): Observable<ResponseTask> {
     return this._http.delete<ResponseTask>(`${this.url}/tasks/${taskId}`);
+  }
+
+  updateTask(taskId: string, data: TaskCreateBody): Observable<ResponseTask> {
+    return this._http.put<ResponseTask>(`${this.url}/tasks/${taskId}`, data);
+  }
+
+  setSelectedTask(task: TaskCreateBody) {
+    this.selectedTaskSubject.next(task);
   }
 }

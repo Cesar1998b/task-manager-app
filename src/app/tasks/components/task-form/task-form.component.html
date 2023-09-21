@@ -1,5 +1,9 @@
+<button mat-icon-button class="back-button" aria-label="edit-icon" [routerLink]="['/tasks']">
+  <mat-icon>reply</mat-icon> Back
+</button>
+
 <div class="content">
-  <h2>Create Task</h2>
+  <h2>{{ titleForm }}</h2>
   <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <input matInput formControlName="title" placeholder="Title" [required]="true">
@@ -7,7 +11,7 @@
     <mat-form-field>
       <textarea matInput formControlName="description" placeholder="Description" [required]="true"></textarea>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!taskForm.valid">Create</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!taskForm.valid">{{ textButton }}</button>
   </form>
 </div>
 

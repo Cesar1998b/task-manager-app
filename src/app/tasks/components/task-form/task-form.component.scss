@@ -1,6 +1,14 @@
+.back-button{
+  width: 110px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border: 1px solid #000;
+  border-radius: 12px;
+}
+
 .content {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 650px;
@@ -15,5 +23,17 @@
     flex-direction: column;
     justify-content: center;
     gap: 20px;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .content {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content{
+    width: 300px;
   }
 }

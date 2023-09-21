@@ -2,12 +2,12 @@
   <mat-card-content>
     <div class="content">
       <div class="content info">
-        <mat-checkbox class="example-margin" [checked]="completed">
+        <mat-checkbox class="example-margin" [checked]="completed" (click)="updateState()">
         </mat-checkbox>
         <p>{{ title }}</p>
       </div>
       <div class="content-actions">
-        <button mat-icon-button class="gray-icon" aria-label="edit-icon">
+        <button mat-icon-button class="gray-icon" aria-label="edit-icon" (click)="editTask()">
           <mat-icon>edit</mat-icon>
         </button>
         <button mat-icon-button class="gray-icon" aria-label="delete-icon" (click)="deleteTask()">

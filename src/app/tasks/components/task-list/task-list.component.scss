@@ -1,4 +1,5 @@
 .content {
+  padding: 16px;
   .content-header{
     display: flex;
     justify-content: space-between;
@@ -31,3 +32,33 @@
 .spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
   stroke: #000000;
 }
+
+@media screen and (max-width: 1280px) {
+  .content {
+    .content-task {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .content {
+    .content-header{
+      flex-direction: column;
+
+      h2{
+        margin: 0;
+        margin-bottom: 10px;
+      }
+
+      button{
+        margin-bottom: 20px;
+      }
+    }
+    .content-task {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+}
+

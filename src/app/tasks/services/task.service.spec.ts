@@ -80,4 +80,22 @@ describe('TaskService', () => {
     expect(req.request.method).toEqual('DELETE');
     req.flush(mockResponse);
   });
+
+  it('should call updateTask', (done: DoneFn) => {
+    const mockData: TaskCreateBody = { title: 'test', description: 'test' };
+    const mockId = 'test';
+
+    const mockResponse: ResponseTask = { message: 'Okay' }
+
+    service.updateTask(mockId, mockData).subscribe((response) => {
+      expect(response).toEqual(mockResponse);
+      done();
+    });
+
+    const req = httpTestingController.expectOne(
+      (testRequest) => testRequest.url === `${url}/tasks/test`
+    );
+    expect(req.request.method).toEqual('PUT');
+    req.flush(mockResponse);
+  });
 });

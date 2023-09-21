@@ -8,8 +8,9 @@ export interface Task {
 }
 
 export interface TaskCreateBody {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
+  completed?: boolean;
 }
 
 export interface ResponseTask {
